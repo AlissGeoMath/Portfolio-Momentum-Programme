@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aliss Bejerano Kindelán · AI for Ceramic Materials</title>
+<meta name="description" content="Geophysicist and researcher in Artificial Intelligence and Deep Learning applied to ceramic materials and Direct Ink Writing (ICV-CSIC).">
+<link rel="icon" href="assets/img/aliss.webp">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum:#4a2f3d; --plum-dark:#3a2430; --mauve:#7d5566; --pink:#e7a1c0; --soft:#f4e6ec;
+    --text:#2b2b2b; --muted:#666; --line:#eadde3; --bg:#faf7f8; --card:#fff;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; scroll-padding-top:70px; }
+  body { margin:0; font-family:"Raleway",system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+  a { color:inherit; }
+  img { display:block; }
+  .container { max-width:1080px; margin:0 auto; padding:0 16px; }
+
+  /* nav */
+  nav { position:sticky; top:0; z-index:10; background:rgba(58,36,48,.96); backdrop-filter:blur(6px); }
+  nav .container { display:flex; align-items:center; gap:24px; height:58px; }
+  nav .brand { color:#fff; font-weight:700; text-decoration:none; white-space:nowrap; }
+  nav ul { list-style:none; margin:0 0 0 auto; padding:0; display:flex; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav ul::-webkit-scrollbar { display:none; }
+  nav a.link { color:#e9dce2; text-decoration:none; font-size:.9rem; white-space:nowrap; }
+  nav a.link:hover { color:var(--pink); }
+
+  /* hero */
+  .hero { background:var(--plum); color:#fff; padding:64px 0 72px; }
+  .hero .container { display:grid; grid-template-columns:220px 1fr; gap:44px; align-items:center; }
+  .hero img { width:220px; height:220px; border-radius:50%; object-fit:cover; border:5px solid #fff; }
+  .hero h1 { margin:0 0 6px; font-size:2.4rem; font-weight:600; line-height:1.15; }
+  .hero .role { margin:0 0 18px; color:var(--pink); font-size:1.1rem; }
+  .hero p.bio { margin:0 0 24px; color:#eadde4; max-width:640px; }
+  .btns { display:flex; flex-wrap:wrap; gap:10px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:99px; font-size:.88rem; font-weight:600;
+         text-decoration:none; border:1.5px solid rgba(255,255,255,.5); color:#fff; transition:background .2s,color .2s; }
+  .btn:hover { background:#fff; color:var(--plum); }
+  .btn.primary { background:var(--pink); border-color:var(--pink); color:var(--plum); }
+  .btn svg { width:16px; height:16px; fill:currentColor; }
+
+  /* sections */
+  section { padding:64px 0 8px; }
+  h2.title { display:inline-block; margin:0 0 8px; padding:6px 16px; background:var(--plum); color:#fff; font-size:1.3rem;
+             letter-spacing:.05em; text-transform:uppercase; }
+  .lead { margin:0 0 28px; color:var(--muted); max-width:720px; }
+
+  .tile { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; display:flex; flex-direction:column;
+          transition:transform .2s, box-shadow .2s; }
+  .tile:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(74,47,61,.12); }
+  .tile h3 { margin:0 0 4px; font-size:1.08rem; }
+  .date { align-self:flex-start; font-size:.76rem; font-weight:600; color:var(--plum); background:var(--soft); padding:2px 10px;
+          border-radius:99px; margin-bottom:8px; }
+  .date.current { background:var(--pink); }
+  .org { margin:0; font-size:.86rem; font-weight:600; color:var(--mauve); }
+  .loc { margin:0 0 10px; font-size:.8rem; color:var(--muted); }
+  .desc { margin:0 0 14px; font-size:.9rem; color:var(--muted); flex:1; }
+  .tags { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px; }
+  .tags li { font-size:.74rem; padding:3px 9px; border-radius:6px; background:var(--soft); color:var(--plum); }
+  .logo { height:70px; display:flex; align-items:center; margin-bottom:14px; }
+  .logo img { max-height:100%; max-width:200px; object-fit:contain; }
+
+  .feature { background:var(--plum); border-color:var(--plum); color:#fff; padding:30px; }
+  .feature .org { color:var(--pink); }
+  .feature .loc, .feature .desc { color:#e9dce2; }
+  .feature .desc { flex:0; font-size:.98rem; margin-bottom:22px; }
+  .feature .tags { margin-top:auto; }
+  .cover { width:100%; border-radius:10px; margin:0 0 22px; background:#fff; }
+  #education .list { margin-top:20px; }
+  .feature .tags li { background:rgba(255,255,255,.14); color:#fff; }
+  .feature h3 { font-size:1.4rem; }
+  .feature .logo { height:110px; background:#fff; border-radius:10px; padding:10px 16px; align-self:flex-start; }
+  .facts { margin:0 0 22px; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+  .facts div { background:rgba(255,255,255,.08); border-radius:10px; padding:12px 14px; }
+  .facts dt { font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--pink); }
+  .facts dd { margin:2px 0 0; font-weight:600; font-size:.95rem; }
+
+  /* projects mosaic */
+  .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    grid-template-areas:"gnn gnn cerml" "gnn gnn review" "digit geo h2"; }
+  .p-gnn{grid-area:gnn} .p-cerml{grid-area:cerml} .p-review{grid-area:review} .p-digit{grid-area:digit} .p-geo{grid-area:geo} .p-h2{grid-area:h2}
+  .kind { font-size:.72rem; text-transform:uppercase; letter-spacing:.07em; font-weight:700; color:var(--mauve); margin-bottom:6px; }
+  .feature .kind { color:var(--pink); }
+
+  /* experience mosaic */
+  .mosaic { display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    grid-template-areas:"geo icv icv" "igme icv icv" "cupet cupet cujae"; }
+  .t-icv{grid-area:icv} .t-geo{grid-area:geo} .t-igme{grid-area:igme} .t-cupet{grid-area:cupet} .t-cujae{grid-area:cujae}
+
+  /* scholarships */
+  .grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  .schol { display:grid; grid-template-columns:130px 1fr; gap:20px; align-items:center; border-left:5px solid var(--mauve); }
+  .schol .logo { height:100px; margin:0; justify-content:center; }
+  .schol .logo img { max-width:130px; }
+
+  /* publications */
+  .list { display:grid; gap:14px; }
+  .item { display:grid; grid-template-columns:90px 1fr; gap:18px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 20px; }
+  .item .yr { font-weight:700; color:var(--mauve); }
+  .item h3 { margin:0 0 4px; font-size:.98rem; }
+  .item p { margin:0; font-size:.86rem; color:var(--muted); }
+  .item a { color:var(--mauve); font-weight:600; }
+  .subhead { margin:34px 0 14px; font-size:1.05rem; color:var(--plum); }
+
+  /* contact */
+  footer { margin-top:72px; background:var(--plum-dark); color:#e9dce2; padding:48px 0; }
+  footer h2 { margin:0 0 8px; color:#fff; font-weight:600; }
+  footer p { margin:0 0 20px; }
+  footer small { display:block; margin-top:28px; opacity:.6; }
+
+  @media (max-width:860px) {
+    .projects { grid-template-columns:1fr 1fr; grid-template-areas:"gnn gnn" "cerml review" "digit digit" "geo h2"; }
+    .mosaic { grid-template-columns:1fr 1fr; grid-template-areas:"icv icv" "geo igme" "cupet cupet" "cujae cujae"; }
+    .grid2 { grid-template-columns:1fr; }
+  }
+  @media (max-width:620px) {
+    .hero .container { grid-template-columns:1fr; text-align:center; gap:24px; }
+    .hero img { margin:0 auto; width:170px; height:170px; }
+    .hero h1 { font-size:1.9rem; }
+    .btns { justify-content:center; }
+    nav .brand { display:none; }
+    nav ul { margin:0; }
+    .projects { grid-template-columns:1fr; grid-template-areas:"gnn" "cerml" "review" "digit" "geo" "h2"; }
+    .mosaic { grid-template-columns:1fr; grid-template-areas:"icv" "geo" "igme" "cupet" "cujae"; }
+    .schol { grid-template-columns:1fr; text-align:center; }
+    .schol .date { align-self:center; }
+    .item { grid-template-columns:1fr; gap:4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="brand" href="#top">Aliss Bejerano K.</a>
+    <ul>
+      <li><a class="link" href="#projects">Projects</a></li>
+      <li><a class="link" href="#experience">Experience</a></li>
+      <li><a class="link" href="#scholarships">Scholarships</a></li>
+      <li><a class="link" href="#publications">Publications</a></li>
+      <li><a class="link" href="#education">Education</a></li>
+      <li><a class="link" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <img src="assets/img/aliss.webp" alt="Aliss Bejerano Kindelán">
+    <div>
+      <h1>Aliss María Bejerano Kindelán</h1>
+      <p class="role">Geophysicist · AI &amp; Deep Learning Researcher · Ceramic Additive Manufacturing</p>
+      <p class="bio">I am a geophysicist and researcher specializing in Artificial Intelligence and Deep Learning, currently pursuing a PhD on the application of machine learning to ceramic materials and Direct Ink Writing. In this work I combine materials engineering, data science and automation to build intelligent tools for scientific research, drawing on experience in scientific data extraction, predictive modeling, graph-based learning and AI-driven software development. Above all, I am interested in developing practical AI solutions that bridge scientific knowledge and real-world applications.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:alissbejerano@gmail.com">
+          <svg viewBox="0 0 24 24"><path d="M2 5h20v14H2zm2 2v.5l8 5 8-5V7zm0 2.8V17h16V9.8l-8 5z"/></svg>Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/alissgeomath" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4 3a2 2 0 110 4 2 2 0 010-4zM2.5 8.5h3V21h-3zM9 8.5h2.9v1.7c.4-.8 1.5-1.9 3.3-1.9 3.5 0 4.3 2.2 4.3 5.2V21h-3v-6.6c0-1.6-.1-3.2-2-3.2-2 0-2.4 1.5-2.4 3.1V21H9z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://orcid.org/0009-0008-3932-5140" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8.3 7.2a.9.9 0 110 1.8.9.9 0 010-1.8zM7.6 10h1.4v7H7.6zm3.2 0h3.1c2.9 0 4.2 2.1 4.2 3.5 0 1.6-1.3 3.5-4.2 3.5h-3.1zm1.4 1.3v4.4h1.6c2.2 0 2.8-1.4 2.8-2.2 0-1.2-.8-2.2-2.8-2.2z"/></svg>ORCID</a>
+        <a class="btn" href="https://github.com/alissGeoMath2" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 015 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0012 2z"/></svg>GitHub</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="title">Research Projects</h2>
+    <p class="lead">Machine learning and data infrastructure for ceramic Direct Ink Writing, built on a background in geophysical modelling and numerical simulation.</p>
+    <div class="projects">
+
+      <article class="tile feature p-gnn">
+        <span class="kind">Graph Neural Networks · PhD</span>
+        <h3>Graph neural networks for composition–rheology–printability relationships in DIW ceramic inks</h3>
+        <p class="org">A. Bejerano, C. Ramírez, M. Belmonte · ICV-CSIC</p>
+        <p class="loc">Oral presentation · LX Congress of the Spanish Ceramic and Glass Society (SECV), Córdoba 2026</p>
+        <p class="desc">Heterogeneous graph model (HeteroConv, relation-specific message passing) trained on formulations extracted from the literature. Printability separates in the rheological plane (yield stress τ<sub>y</sub> vs. G′) rather than in composition space, revealing two failure modes — insufficient yield and excessive stiffness — with a threshold consistent with the ≈200 Pa reported in the literature.</p>
+        <dl class="facts">
+          <div><dt>Formulations</dt><dd>83 from 27 papers</dd></div>
+          <div><dt>Extracted quantities</dt><dd>633</dd></div>
+          <div><dt>Graph</dt><dd>131 nodes · 663 edges</dd></div>
+        </dl>
+        <img class="cover" src="assets/img/diw-ml.webp" alt="Machine-learning optimisation of ceramic ink formulations for Direct Ink Writing">
+        <ul class="tags"><li>HeteroConv</li><li>Rheology</li><li>Printability</li><li>DOI-grouped CV</li></ul>
+      </article>
+
+      <article class="tile p-cerml">
+        <span class="kind">Master's thesis · UPM</span>
+        <h3>CERML — extracting DIW parameters from scientific literature</h3>
+        <p class="desc">Hybrid three-layer pipeline (regex → question answering with scientific encoders → LLM structuring) that turns papers into a structured database of pre-printing, printing and post-printing variables. Containerised platform with RAG chat, extractor, database and analytics modules.</p>
+        <ul class="tags"><li>NLP</li><li>LLMs</li><li>RAG</li><li>FastAPI</li><li>React</li><li>Docker</li></ul>
+      </article>
+
+      <article class="tile p-review">
+        <span class="kind">Review · in preparation</span>
+        <h3>Machine learning for ceramic materials and Direct Ink Writing</h3>
+        <p class="desc">Review of ML and deep-learning methods applied to ceramics, from classical models (BPNN, decision trees, SVM, k-NN) to voxel encodings, with a focus on DIW and future research lines.</p>
+        <ul class="tags"><li>Machine Learning</li><li>Deep Learning</li><li>DIW</li></ul>
+      </article>
+
+      <article class="tile p-digit">
+        <span class="kind">Data tool</span>
+        <h3>Digitising rheology curves from published figures</h3>
+        <p class="desc">Python workflow that recovers data points from log-log viscosity–shear rate plots and stores curves and scalars (yield stress, G′, viscosity) in long-format tables ready for modelling.</p>
+        <ul class="tags"><li>Python</li><li>Data extraction</li><li>Rheology</li></ul>
+      </article>
+
+      <article class="tile p-geo">
+        <span class="kind">Geophysics · Geo3BCN-CSIC</span>
+        <h3>GEOTHERPAL — 3D thermal model of La Palma</h3>
+        <p class="desc">3D lithospheric thermal model of La Palma (Canary Islands): mesh generation, boundary conditions and steady-state and transient simulations.</p>
+        <ul class="tags"><li>COMSOL</li><li>Geothermal</li><li>FEM</li></ul>
+      </article>
+
+      <article class="tile p-h2">
+        <span class="kind">Master's thesis · UPNA</span>
+        <h3>Hydrogen storage on the Barbastro anticline</h3>
+        <p class="desc">Numerical simulation of potential hydrogen storage on the southern flank of the Barbastro anticline, Ebro Basin (Spain).</p>
+        <ul class="tags"><li>Numerical simulation</li><li>H₂ storage</li></ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="title">Work Experience</h2>
+    <p class="lead">From petroleum geophysics in Cuba to AI for advanced ceramics in Spain.</p>
+    <div class="mosaic">
+
+      <article class="tile feature t-icv">
+        <div class="logo"><img src="assets/img/icv.webp" alt="ICV-CSIC"></div>
+        <span class="date current">Mar 2025 – Present</span>
+        <h3>PhD Candidate · MOMENTUM CSIC</h3>
+        <p class="org">Institute of Ceramics and Glass (ICV-CSIC)</p>
+        <p class="loc">Madrid, Spain</p>
+        <p class="desc">Machine learning for the optimisation of ceramic inks and 3D designs produced by Direct Ink Writing (robocasting). I build tools that extract printing parameters from the scientific literature and graph neural networks that link ink composition, rheology and printability.</p>
+        <dl class="facts">
+          <div><dt>Research group</dt><dd>Technical Ceramics</dd></div>
+          <div><dt>Project</dt><dd>MMT24-ICV-01-01</dd></div>
+          <div><dt>Doctoral programme</dt><dd>Universidad Carlos III de Madrid</dd></div>
+        </dl>
+        <ul class="tags"><li>Machine Learning</li><li>Deep Learning</li><li>GNN</li><li>Direct Ink Writing</li><li>Ceramics</li></ul>
+      </article>
+
+      <article class="tile t-geo">
+        <div class="logo"><img src="assets/img/geo3bcn.webp" alt="Geo3BCN-CSIC"></div>
+        <span class="date">Oct 2023 – Apr 2024</span>
+        <h3>Research Intern · JAE Intro</h3>
+        <p class="org">Geosciences Barcelona (Geo3BCN-CSIC)</p>
+        <p class="loc">Barcelona, Spain</p>
+        <p class="desc">3D lithospheric thermal model of La Palma (Canary Islands), together with the Complutense University of Madrid: meshing, boundary conditions and steady-state and transient thermal simulations.</p>
+        <ul class="tags"><li>Thermal modelling</li><li>Geothermal</li><li>COMSOL</li></ul>
+      </article>
+
+      <article class="tile t-igme">
+        <div class="logo"><img src="assets/img/ris.webp" alt="RIS Internship"></div>
+        <span class="date">May – Aug 2023</span>
+        <h3>RIS Intern · Raw Materials</h3>
+        <p class="org">Geological Survey of Spain (IGME-CSIC)</p>
+        <p class="loc">Zaragoza, Spain</p>
+        <p class="desc">Feasibility of hydrogen storage in salt cavities left by mining. Laboratory evaluation of raw materials, data analysis and technical reporting.</p>
+        <ul class="tags"><li>H₂ storage</li><li>Raw materials</li><li>Data analysis</li></ul>
+      </article>
+
+      <article class="tile t-cupet">
+        <div class="logo"><img src="assets/img/cupet.webp" alt="CEINPET"></div>
+        <span class="date">Sep 2019 – Oct 2022</span>
+        <h3>R&amp;D&amp;I Specialist in Geophysics</h3>
+        <p class="org">Petroleum Research Center (CEINPET)</p>
+        <p class="loc">Havana, Cuba</p>
+        <p class="desc">National and international exploration projects: land seismic acquisition design, interpretation of seismogeological horizons, gravity and magnetic modelling, Werner deconvolution, fault mapping for geohazards and the Gulf of Mexico border project (USA–Cuba–Mexico).</p>
+        <ul class="tags"><li>Seismic</li><li>Gravimetry</li><li>Magnetometry</li><li>Data mining</li></ul>
+      </article>
+
+      <article class="tile t-cujae">
+        <div class="logo"><img src="assets/img/cujae.webp" alt="CUJAE"></div>
+        <span class="date">Sep 2017 – Jan 2018</span>
+        <h3>Teaching Assistant</h3>
+        <p class="org">Technological University of Havana (CUJAE)</p>
+        <p class="loc">Havana, Cuba</p>
+        <p class="desc">Supported classroom and laboratory teaching, student assessment and research projects.</p>
+        <ul class="tags"><li>Teaching</li></ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SCHOLARSHIPS -->
+  <section id="scholarships">
+    <h2 class="title">Scholarships</h2>
+    <p class="lead">Competitive programmes that have funded my research.</p>
+    <div class="grid2">
+      <article class="tile schol">
+        <div class="logo"><img src="assets/img/momentum.webp" alt="MOMENTUM CSIC"></div>
+        <div>
+          <span class="date current">Mar 2025 – Present</span>
+          <h3>MOMENTUM Programme</h3>
+          <p class="org">Spanish National Research Council (CSIC)</p>
+          <p class="desc">Digital Talent Attraction and Retention Programme at ICV-CSIC (project MMT24-ICV-01-01).</p>
+        </div>
+      </article>
+      <article class="tile schol">
+        <div class="logo"><img src="assets/img/jae.webp" alt="JAE Intro CSIC"></div>
+        <div>
+          <span class="date">Oct 2023 – Apr 2024</span>
+          <h3>JAE Intro Programme</h3>
+          <p class="org">Spanish National Research Council (CSIC)</p>
+          <p class="desc">Introductory research scholarship at Geo3BCN-CSIC, project GEOTHERPAL.</p>
+        </div>
+      </article>
+      <article class="tile schol">
+        <div class="logo"><img src="assets/img/ris-eit.webp" alt="EIT RawMaterials RIS"></div>
+        <div>
+          <span class="date">May – Aug 2023</span>
+          <h3>RIS Internship in Raw Materials</h3>
+          <p class="org">EIT RawMaterials · RIS Programme</p>
+          <p class="desc">Internship at IGME-CSIC with the University of Zagreb, for EIT-labelled MSc students.</p>
+        </div>
+      </article>
+      <article class="tile schol">
+        <div class="logo"><img src="assets/img/upna.webp" alt="Public University of Navarra"></div>
+        <div>
+          <span class="date">Oct 2022 – Sep 2023</span>
+          <h3>International Talent Acquisition</h3>
+          <p class="org">Public University of Navarra (UPNA)</p>
+          <p class="desc">Master's scholarship — only 7 positions awarded worldwide.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2 class="title">Publications &amp; Talks</h2>
+
+    <h3 class="subhead">Peer-reviewed publications</h3>
+    <div class="list">
+      <div class="item">
+        <span class="yr">2021</span>
+        <div>
+          <h3>Location of elevations of the folded sediments of the continental paleomargin under the rocks of the Cretaceous Volcanic Arc and the ophiolites for oil exploration in Cuba</h3>
+          <p>Bejerano-Kindelán, A.; Prol-Betancourt, P.; Miró-Pagés, G.; Rifá-Hernández, M.C. · <em>Geociencias UO</em>, Universidad Olmeca (Mexico). <a href="https://geocienciasuo.olmeca.edu.mx/wp-content/uploads/2022/05/Geociencias-UO-EJEM08-I_D.pdf#page=38" target="_blank" rel="noopener">PDF</a></p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="yr">2020</span>
+        <div>
+          <h3>Transformation of the gravitational field for the separation of the contribution of different anomaly sources in oil exploration in Cuba: Vertientes–La Gloria case</h3>
+          <p>Bejerano-Kindelán, A.; Prol-Betancourt, P.; Rifá-Hernández, M.C. · <em>Geociencias UO</em> 3(2), 90–98. <a href="http://www.olmeca.edu.mx/geociencias" target="_blank" rel="noopener">Journal</a></p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subhead">Conference talks &amp; posters</h3>
+    <div class="list">
+      <div class="item"><span class="yr">2026</span><div><h3>Graph neural networks for composition–rheology–printability relationships in DIW ceramic inks</h3><p>Oral · LX Congress of the Spanish Ceramic and Glass Society (SECV), Córdoba</p></div></div>
+      <div class="item"><span class="yr">2024</span><div><h3>Geomechanical pre-conditioning of hot dry rocks using recovery stresses of shape memory alloys</h3><p>Oral · GeoRIN Meeting</p></div></div>
+      <div class="item"><span class="yr">2024</span><div><h3>3D thermal model of La Palma, Canary Islands</h3><p>Oral · Carpe Diem, Cadaqués (Spain) · with A. García</p></div></div>
+      <div class="item"><span class="yr">2021</span><div><h3>Transformation of the gravitational field for the separation of anomaly sources: Vertientes–La Gloria case</h3><p>Poster · XI Congress of Geophysics (Geofísica 2021), Havana</p></div></div>
+      <div class="item"><span class="yr">2019</span><div><h3>Petrophysical evaluation of a well in the Puerto Escondido field as an example of the Placetas stratigraphic unit</h3><p>Poster · VIII Earth Sciences Congress, Havana</p></div></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 class="title">Education</h2>
+    <div class="list">
+      <div class="item"><span class="yr">Present</span><div><h3>PhD Candidate</h3><p>Universidad Carlos III de Madrid · research at ICV-CSIC</p></div></div>
+      <div class="item"><span class="yr">Present</span><div><h3>Master in Deep Learning (Máster de Formación Permanente)</h3><p>Universidad Politécnica de Madrid (UPM)</p></div></div>
+      <div class="item"><span class="yr">2023</span><div><h3>M.Sc. in Modelling and Mathematical Research, Statistics and Computer Science</h3><p>Public University of Navarra (UPNA) · inter-university programme with the University of Zaragoza and the University of the Basque Country</p></div></div>
+      <div class="item"><span class="yr">2019</span><div><h3>M.Sc. in Geophysical Engineering</h3><p>Technological University of Havana "José Antonio Echeverría" (CUJAE) · final grade 9.22/10</p></div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <h2>Let's connect</h2>
+    <p>Open to collaborations on machine learning for materials, scientific data extraction and AI tools for research.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:alissbejerano@gmail.com">alissbejerano@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/alissgeomath" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0008-3932-5140" target="_blank" rel="noopener">ORCID</a>
+      <a class="btn" href="https://github.com/alissGeoMath2" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <small>© 2026 Aliss María Bejerano Kindelán</small>
+  </div>
+</footer>
+
+</body>
+</html>
